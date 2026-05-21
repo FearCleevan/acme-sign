@@ -172,7 +172,7 @@ export default function ContactPage() {
           <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-signal mb-4">
             FIND OUR SHOP
           </p>
-          <div className="overflow-hidden rounded-card border border-chalk-deep" style={{ height: 420 }}>
+          <div className="overflow-hidden rounded-card border border-chalk-deep" style={{ height: 520 }}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2838.8776834985547!2d-63.5906098!3d44.7047758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b5a26dbf6e1ce91%3A0x9caccc40ecab06d0!2sAcme%20Sign%20%26%20Graphics%20Co!5e0!3m2!1sen!2sca!4v1716000000000!5m2!1sen!2sca"
               width="100%"
