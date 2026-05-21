@@ -1,13 +1,20 @@
 'use client'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { services } from '@/lib/mockData'
+
+interface NavService {
+  id: string
+  slug: string
+  name: string
+  shortDescription: string
+}
 
 interface ServicesDropdownProps {
   isOpen: boolean
+  services: NavService[]
 }
 
-export default function ServicesDropdown({ isOpen }: ServicesDropdownProps) {
+export default function ServicesDropdown({ isOpen, services }: ServicesDropdownProps) {
   return (
     <AnimatePresence>
       {isOpen && (

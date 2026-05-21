@@ -7,7 +7,18 @@ import NavLinks from './NavLinks'
 import NavActions from './NavActions'
 import MobileDrawer from './MobileDrawer'
 
-export default function Nav() {
+interface NavService {
+  id: string
+  slug: string
+  name: string
+  shortDescription: string
+}
+
+interface NavProps {
+  services: NavService[]
+}
+
+export default function Nav({ services }: NavProps) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -46,7 +57,7 @@ export default function Nav() {
           </Link>
 
           {/* Center — Nav Links */}
-          <NavLinks />
+          <NavLinks services={services} />
 
           {/* Right — Actions */}
           <div className="flex items-center justify-end gap-3">

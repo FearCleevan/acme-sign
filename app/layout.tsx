@@ -4,6 +4,8 @@ import '../styles/globals.css'
 import Nav from '@/components/nav/Nav'
 import Footer from '@/components/shared/Footer'
 import LocalSEOSchema from '@/components/shared/LocalSEOSchema'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { allServicesQuery } from '@/lib/queries'
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -53,11 +55,15 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const navServices = await sanityFetch<{ id: string; slug: string; name: string; shortDescription: string }[]>(
+    allServicesQuery
+  ).catch(() => [])
+
   return (
     <html
       lang="en"
@@ -75,7 +81,7 @@ export default function RootLayout({
           Skip to content
         </a>
 
-        <Nav />
+        <Nav services={navServices} />
 
         <main id="main-content" className="flex-1">
           {children}

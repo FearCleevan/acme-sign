@@ -6,6 +6,17 @@ import { BiChevronDown } from 'react-icons/bi'
 import { cn } from '@/lib/utils'
 import ServicesDropdown from './ServicesDropdown'
 
+interface NavService {
+  id: string
+  slug: string
+  name: string
+  shortDescription: string
+}
+
+interface NavLinksProps {
+  services: NavService[]
+}
+
 const links = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services', hasDropdown: true },
@@ -16,7 +27,7 @@ const links = [
   { label: 'Contact', href: '/contact' },
 ]
 
-export default function NavLinks() {
+export default function NavLinks({ services }: NavLinksProps) {
   const pathname = usePathname()
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -63,7 +74,7 @@ export default function NavLinks() {
                   )}
                 />
               </Link>
-              <ServicesDropdown isOpen={dropdownOpen} />
+              <ServicesDropdown isOpen={dropdownOpen} services={services} />
             </div>
           )
         }
