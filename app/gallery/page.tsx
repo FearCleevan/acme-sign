@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
-import { galleryItems } from '@/lib/mockData'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { allGalleryItemsQuery } from '@/lib/queries'
+import type { SanityGalleryItem } from '@/lib/types'
 import Eyebrow from '@/components/shared/Eyebrow'
 import Breadcrumb from '@/components/shared/Breadcrumb'
 import GalleryInteractive from '@/components/gallery/GalleryInteractive'
@@ -10,7 +12,8 @@ export const metadata: Metadata = {
     'Browse 42 years of Acme Sign work — vehicle wraps, LED signs, channel signs, dimensional signs, window graphics, banners, and apparel across Atlantic Canada.',
 }
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const galleryItems = await sanityFetch<SanityGalleryItem[]>(allGalleryItemsQuery)
   return (
     <>
       {/* Hero */}

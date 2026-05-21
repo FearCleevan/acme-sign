@@ -1,6 +1,8 @@
 import Link from 'next/link'
-import { galleryItems } from '@/lib/mockData'
-import type { GalleryCategory } from '@/lib/types'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { galleryItemsByCategoryQuery } from '@/lib/queries'
+import type { SanityGalleryItem, GalleryCategory } from '@/lib/types'
+import { urlFor } from '@/lib/sanityImage'
 import ImagePlate from '@/components/shared/ImagePlate'
 
 const slugToCategoryMap: Record<string, GalleryCategory | null> = {
@@ -19,10 +21,10 @@ interface ServiceGalleryProps {
   serviceName: string
 }
 
-export default function ServiceGallery({ serviceSlug, serviceName }: ServiceGalleryProps) {
+export default async function ServiceGallery({ serviceSlug, serviceName }: ServiceGalleryProps) {
   const category = slugToCategoryMap[serviceSlug]
-  const items = category
-    ? galleryItems.filter((item) => item.category === category).slice(0, 3)
+  const items: SanityGalleryItem[] = category
+    ? (await sanityFetch<SanityGalleryItem[]>(galleryItemsByCategoryQuery, { category })).slice(0, 3)
     : []
 
   if (items.length === 0) return null
@@ -56,7 +58,8 @@ export default function ServiceGallery({ serviceSlug, serviceName }: ServiceGall
             >
               <div className="relative">
                 <ImagePlate
-                  alt={item.title}
+                  src={item.image ? urlFor(item.image).width(600).height(450).fit('crop').url() : undefined}
+                  alt={item.image?.alt ?? item.title}
                   aspectRatio="4/3"
                   dark
                   className="w-full"

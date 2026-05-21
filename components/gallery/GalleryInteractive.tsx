@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import type { GalleryItem, GalleryCategory } from '@/lib/types'
+import type { SanityGalleryItem, GalleryCategory } from '@/lib/types'
+import { urlFor } from '@/lib/sanityImage'
 import ImagePlate from '@/components/shared/ImagePlate'
 import GalleryLightbox from './GalleryLightbox'
 
@@ -32,7 +33,7 @@ const categoryLabels: Record<string, string> = {
 }
 
 interface GalleryInteractiveProps {
-  items: GalleryItem[]
+  items: SanityGalleryItem[]
 }
 
 export default function GalleryInteractive({ items }: GalleryInteractiveProps) {
@@ -132,7 +133,8 @@ export default function GalleryInteractive({ items }: GalleryInteractiveProps) {
                       aria-label={`Open ${item.title}`}
                     >
                       <ImagePlate
-                        alt={item.title}
+                        src={item.image ? urlFor(item.image).width(800).height(item.featured ? 450 : 600).fit('crop').url() : undefined}
+                        alt={item.image?.alt ?? item.title}
                         aspectRatio={item.featured ? '16/9' : '4/3'}
                         dark
                         className="w-full"

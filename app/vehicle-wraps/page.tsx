@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { galleryItems } from '@/lib/mockData'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { galleryItemsByCategoryQuery } from '@/lib/queries'
+import type { SanityGalleryItem } from '@/lib/types'
+import { urlFor } from '@/lib/sanityImage'
 import VehicleWrapsHero from '@/components/vehicle-wraps/VehicleWrapsHero'
 import FAQAccordion from '@/components/shared/FAQAccordion'
 import type { FAQItem } from '@/components/shared/FAQAccordion'
@@ -75,8 +78,8 @@ const wrapFAQs: FAQItem[] = [
   },
 ]
 
-export default function VehicleWrapsPage() {
-  const wrapGallery = galleryItems.filter((item) => item.category === 'vehicle-wraps')
+export default async function VehicleWrapsPage() {
+  const wrapGallery = await sanityFetch<SanityGalleryItem[]>(galleryItemsByCategoryQuery, { category: 'vehicle-wraps' })
 
   return (
     <>
@@ -204,7 +207,13 @@ export default function VehicleWrapsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {wrapGallery.map((item) => (
               <div key={item.id} className="relative overflow-hidden rounded-card group">
-                <ImagePlate alt={item.title} aspectRatio="4/3" dark className="w-full" />
+                <ImagePlate
+                  src={item.image ? urlFor(item.image).width(600).height(450).fit('crop').url() : undefined}
+                  alt={item.image?.alt ?? item.title}
+                  aspectRatio="4/3"
+                  dark
+                  className="w-full"
+                />
                 <div className="absolute inset-0 bg-linear-to-t from-steel/80 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-200">
                   <p className="font-sans text-[13px] font-semibold text-chalk">{item.client}</p>

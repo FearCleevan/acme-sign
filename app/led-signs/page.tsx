@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { galleryItems } from '@/lib/mockData'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { galleryItemsByCategoryQuery } from '@/lib/queries'
+import type { SanityGalleryItem } from '@/lib/types'
+import { urlFor } from '@/lib/sanityImage'
 import LEDSignsHero from '@/components/led-signs/LEDSignsHero'
 import FAQAccordion from '@/components/shared/FAQAccordion'
 import type { FAQItem } from '@/components/shared/FAQAccordion'
@@ -96,8 +99,8 @@ const ledFAQs: FAQItem[] = [
   },
 ]
 
-export default function LEDSignsPage() {
-  const ledGallery = galleryItems.filter((item) => item.category === 'led-signs')
+export default async function LEDSignsPage() {
+  const ledGallery = await sanityFetch<SanityGalleryItem[]>(galleryItemsByCategoryQuery, { category: 'led-signs' })
 
   return (
     <>
@@ -181,7 +184,13 @@ export default function LEDSignsPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {ledGallery.map((item) => (
                 <div key={item.id} className="relative overflow-hidden rounded-card group">
-                  <ImagePlate alt={item.title} aspectRatio="4/3" dark className="w-full" />
+                  <ImagePlate
+                    src={item.image ? urlFor(item.image).width(600).height(450).fit('crop').url() : undefined}
+                    alt={item.image?.alt ?? item.title}
+                    aspectRatio="4/3"
+                    dark
+                    className="w-full"
+                  />
                   <div className="absolute inset-0 bg-linear-to-t from-steel/80 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-200">
                     <p className="font-sans text-[13px] font-semibold text-chalk">{item.client}</p>

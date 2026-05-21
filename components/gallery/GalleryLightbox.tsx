@@ -2,9 +2,11 @@
 
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
 import { BiChevronLeft, BiChevronRight, BiX } from 'react-icons/bi'
-import type { GalleryItem } from '@/lib/types'
+import type { SanityGalleryItem } from '@/lib/types'
+import { urlFor } from '@/lib/sanityImage'
 
 const categoryLabels: Record<string, string> = {
   'vehicle-wraps': 'Vehicle Wraps',
@@ -18,7 +20,7 @@ const categoryLabels: Record<string, string> = {
 }
 
 interface GalleryLightboxProps {
-  items: GalleryItem[]
+  items: SanityGalleryItem[]
   activeIndex: number
   onClose: () => void
   onPrev: () => void
@@ -75,12 +77,21 @@ export default function GalleryLightbox({
 
         {/* Image area */}
         <div className="relative flex-1 min-h-[55vh] lg:min-h-0 bg-steel-mid img-plate-dark">
-          {/* Item label centered */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-chalk/20">
-              {item.title}
-            </span>
-          </div>
+          {item.image ? (
+            <Image
+              src={urlFor(item.image).width(1400).height(900).fit('max').url()}
+              alt={item.image.alt ?? item.title}
+              fill
+              className="object-contain"
+              sizes="(max-width: 1024px) 100vw, 65vw"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-chalk/20">
+                {item.title}
+              </span>
+            </div>
+          )}
 
           {/* Prev arrow */}
           <button
