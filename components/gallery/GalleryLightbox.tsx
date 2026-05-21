@@ -60,8 +60,8 @@ export default function GalleryLightbox({
     >
       {/* Content panel */}
       <div
-        className="relative w-full max-w-5xl bg-steel-dark rounded-card overflow-hidden flex flex-col lg:flex-row"
-        style={{ maxHeight: '90vh' }}
+        className="relative w-full max-w-7xl bg-steel-dark rounded-card overflow-hidden flex flex-col lg:flex-row"
+        style={{ maxHeight: '92vh', minHeight: '70vh' }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -74,7 +74,7 @@ export default function GalleryLightbox({
         </button>
 
         {/* Image area */}
-        <div className="relative flex-1 min-h-[42vh] lg:min-h-0 bg-steel-mid img-plate-dark">
+        <div className="relative flex-1 min-h-[55vh] lg:min-h-0 bg-steel-mid img-plate-dark">
           {/* Item label centered */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-chalk/20">
@@ -109,7 +109,7 @@ export default function GalleryLightbox({
         </div>
 
         {/* Info panel */}
-        <div className="lg:w-72 xl:w-80 border-t lg:border-t-0 lg:border-l border-steel-light flex flex-col gap-5 p-6 overflow-y-auto">
+        <div className="lg:w-64 xl:w-72 shrink-0 border-t lg:border-t-0 lg:border-l border-steel-light flex flex-col gap-5 p-6 overflow-y-auto">
           {/* Category */}
           <span className="font-mono text-[9px] uppercase tracking-[0.18em] bg-signal text-steel px-3 py-1.5 rounded-pill self-start">
             {categoryLabels[item.category] ?? item.category}
