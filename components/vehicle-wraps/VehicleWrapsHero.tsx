@@ -53,9 +53,9 @@ export default function VehicleWrapsHero() {
       <motion.div
         ref={fgRef}
         style={{ y: fgY }}
-        className="relative z-10 container-site w-full pt-[72px]"
+        className="relative z-10 container-site w-full pt-18"
       >
-        <div className="flex flex-col gap-7 py-20 lg:py-28 max-w-[800px]">
+        <div className="flex flex-col gap-7 py-20 lg:py-28 max-w-200">
 
           {/* Badge */}
           <div className="flex">
@@ -99,13 +99,13 @@ export default function VehicleWrapsHero() {
           >
             <Link
               href="/quote?service=vehicle-wraps"
-              className="inline-flex items-center justify-center min-h-[52px] px-8 font-display text-[18px] tracking-[0.05em] uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark transition-all duration-200 hover:-translate-y-px"
+              className="inline-flex items-center justify-center min-h-13 px-8 font-display text-[18px] tracking-wider uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark transition-all duration-200 hover:-translate-y-px"
             >
               Get a Wrap Quote
             </Link>
             <Link
               href="/gallery"
-              className="inline-flex items-center justify-center min-h-[52px] px-8 font-display text-[18px] tracking-[0.05em] uppercase rounded-btn border border-steel-light text-chalk hover:border-signal/50 hover:text-signal transition-all duration-200"
+              className="inline-flex items-center justify-center min-h-13 px-8 font-display text-[18px] tracking-wider uppercase rounded-btn border border-steel-light text-chalk hover:border-signal/50 hover:text-signal transition-all duration-200"
             >
               View Wrap Gallery
             </Link>
