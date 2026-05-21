@@ -25,7 +25,7 @@ export default function ServicesDropdown({ isOpen }: ServicesDropdownProps) {
                 href={`/services/${service.slug}`}
                 className="group flex items-start gap-3 px-4 py-3 hover:bg-steel-mid transition-colors rounded-sm"
               >
-                <span className="mt-[5px] w-[6px] h-[6px] rounded-full bg-signal opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                <span className="mt-[5px] w-[6px] h-[6px] rounded-full bg-signal opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                 <div>
                   <p className="font-sans text-[14px] text-chalk leading-tight">
                     {service.name}
