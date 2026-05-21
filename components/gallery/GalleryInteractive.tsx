@@ -131,7 +131,7 @@ export default function GalleryInteractive({ items }: GalleryInteractiveProps) {
                       />
 
                       {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-steel/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-steel/80 via-transparent to-transparent" />
 
                       {/* Category badge */}
                       <span className="absolute top-3 right-3 font-mono text-[9px] uppercase tracking-[0.14em] bg-signal text-steel px-2 py-1 rounded-pill">

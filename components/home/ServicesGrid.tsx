@@ -60,7 +60,7 @@ export default function ServicesGrid() {
                 {/* Signal left border on hover */}
                 <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-signal origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-250" />
 
-                <Icon size={40} className="text-signal flex-shrink-0" aria-hidden="true" />
+                <Icon size={40} className="text-signal shrink-0" aria-hidden="true" />
 
                 <div className="flex flex-col gap-2 flex-1">
                   <h3 className="font-display text-[22px] tracking-[0.02em] leading-none text-steel">

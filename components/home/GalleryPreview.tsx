@@ -39,14 +39,14 @@ export default function GalleryPreview() {
             href="/gallery"
             className="group relative overflow-hidden rounded-card lg:col-span-2 lg:row-span-2"
           >
-            <div className="aspect-[4/3] lg:aspect-auto lg:h-full min-h-[300px]">
+            <div className="aspect-4/3 lg:aspect-auto lg:h-full min-h-[300px]">
               <ImagePlate
                 alt={featured[0]?.title ?? 'Gallery item'}
                 aspectRatio="3/2"
                 dark
                 className="w-full h-full"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-steel/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-steel/80 via-transparent to-transparent" />
               <div className="absolute top-3 right-3 font-mono text-[9px] uppercase tracking-[0.14em] bg-signal text-steel px-2 py-1 rounded-pill">
                 {categoryLabel(featured[0]?.category ?? '')}
               </div>
@@ -71,7 +71,7 @@ export default function GalleryPreview() {
                   dark
                   className="w-full"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-steel/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-steel/70 via-transparent to-transparent" />
                 <div className="absolute top-2 right-2 font-mono text-[8px] uppercase tracking-[0.12em] bg-signal text-steel px-2 py-0.5 rounded-pill">
                   {categoryLabel(item.category)}
                 </div>
@@ -97,7 +97,7 @@ export default function GalleryPreview() {
                     className="w-full"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-steel/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-steel/70 via-transparent to-transparent" />
                 <div className="absolute top-3 right-3 font-mono text-[9px] uppercase tracking-[0.14em] bg-signal text-steel px-2 py-1 rounded-pill">
                   {categoryLabel(featured[5].category)}
                 </div>

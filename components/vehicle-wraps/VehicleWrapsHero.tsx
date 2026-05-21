@@ -38,7 +38,7 @@ export default function VehicleWrapsHero() {
 
       {/* Gradient overlay */}
       <div
-        className="absolute inset-0 z-[1]"
+        className="absolute inset-0 z-1"
         style={{
           background:
             'linear-gradient(to right, rgba(13,15,17,0.94) 0%, rgba(13,15,17,0.75) 55%, rgba(13,15,17,0.35) 100%)',
@@ -47,7 +47,7 @@ export default function VehicleWrapsHero() {
       />
 
       {/* Diagonal texture */}
-      <div className="absolute inset-0 z-[2] texture-overlay" aria-hidden="true" />
+      <div className="absolute inset-0 z-2 texture-overlay" aria-hidden="true" />
 
       {/* Foreground content */}
       <motion.div

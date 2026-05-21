@@ -52,7 +52,7 @@ export default function GalleryLightbox({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      className="fixed inset-0 z-[100] bg-steel/96 backdrop-blur-sm flex items-center justify-center p-4 lg:p-8"
+      className="fixed inset-0 z-100 bg-steel/96 backdrop-blur-sm flex items-center justify-center p-4 lg:p-8"
       onClick={onClose}
       role="dialog"
       aria-modal="true"

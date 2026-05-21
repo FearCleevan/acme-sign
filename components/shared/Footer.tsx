@@ -53,7 +53,7 @@ export default function Footer() {
             <div className="flex flex-col gap-5">
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <span className="block w-[3px] h-7 bg-signal flex-shrink-0" />
+                  <span className="block w-[3px] h-7 bg-signal shrink-0" />
                   <div>
                     <div className="font-display text-[26px] tracking-[0.04em] text-chalk leading-none">
                       ACME SIGN

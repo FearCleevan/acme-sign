@@ -35,7 +35,7 @@ export default function HeroSection() {
 
       {/* Gradient overlay */}
       <div
-        className="absolute inset-0 z-[1]"
+        className="absolute inset-0 z-1"
         style={{
           background:
             'linear-gradient(to right, rgba(13,15,17,0.92) 0%, rgba(13,15,17,0.70) 50%, rgba(13,15,17,0.30) 100%)',
@@ -44,7 +44,7 @@ export default function HeroSection() {
       />
 
       {/* Diagonal texture */}
-      <div className="absolute inset-0 z-[2] texture-overlay" aria-hidden="true" />
+      <div className="absolute inset-0 z-2 texture-overlay" aria-hidden="true" />
 
       {/* Foreground content */}
       <motion.div

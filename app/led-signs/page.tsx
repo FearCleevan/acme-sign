@@ -182,7 +182,7 @@ export default function LEDSignsPage() {
               {ledGallery.map((item) => (
                 <div key={item.id} className="relative overflow-hidden rounded-card group">
                   <ImagePlate alt={item.title} aspectRatio="4/3" dark className="w-full" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-steel/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-steel/80 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-200">
                     <p className="font-sans text-[13px] font-semibold text-chalk">{item.client}</p>
                     <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-chalk/60 mt-0.5">
