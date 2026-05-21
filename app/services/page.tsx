@@ -67,7 +67,7 @@ export default function ServicesPage() {
                   <ul className="flex flex-col gap-2">
                     {service.features.slice(0, 3).map((feat, fi) => (
                       <li key={fi} className="flex items-center gap-3">
-                        <BiCheckCircle size={16} className="text-signal flex-shrink-0" aria-hidden="true" />
+                        <BiCheckCircle size={16} className="text-signal shrink-0" aria-hidden="true" />
                         <span className="font-sans text-[14px] text-iron">{feat}</span>
                       </li>
                     ))}

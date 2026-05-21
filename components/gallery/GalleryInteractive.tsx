@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { GalleryItem, GalleryCategory } from '@/lib/types'
 import ImagePlate from '@/components/shared/ImagePlate'
@@ -44,14 +44,22 @@ export default function GalleryInteractive({ items }: GalleryInteractiveProps) {
       ? items
       : items.filter((item) => item.category === activeCategory)
 
+  useEffect (() => {
+    if (lightboxIndex != null) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+
+    return () => { document.body.style.overflow = '' }
+  }, [lightboxIndex])
+
   function openLightbox(index: number) {
     setLightboxIndex(index)
-    document.body.style.overflow = 'hidden'
   }
 
   function closeLightbox() {
     setLightboxIndex(null)
-    document.body.style.overflow = ''
   }
 
   function prevItem() {
