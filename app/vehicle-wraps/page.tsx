@@ -137,7 +137,7 @@ export default function VehicleWrapsPage() {
       {/* ── Mobile Canvas callout ─────────────────────────────────────────── */}
       <section className="bg-steel-dark py-12 lg:py-16">
         <div className="container-site max-w-[860px]">
-          <div className="border-l-[4px] border-signal pl-8 flex flex-col gap-3">
+          <div className="border-l-4 border-signal pl-8 flex flex-col gap-3">
             <p className="font-serif italic text-[clamp(18px,2.5vw,26px)] text-[#F0EDE6] leading-relaxed">
               &ldquo;Your vehicle serves as a mobile canvas for your corporate identity. Strategically
               placed logos, taglines, and brand elements ensure that your company makes a statement
@@ -205,7 +205,7 @@ export default function VehicleWrapsPage() {
             {wrapGallery.map((item) => (
               <div key={item.id} className="relative overflow-hidden rounded-card group">
                 <ImagePlate alt={item.title} aspectRatio="4/3" dark className="w-full" />
-                <div className="absolute inset-0 bg-gradient-to-t from-steel/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-steel/80 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-200">
                   <p className="font-sans text-[13px] font-semibold text-chalk">{item.client}</p>
                   <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-chalk/60 mt-0.5">
