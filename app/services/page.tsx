@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { BiCheckCircle } from 'react-icons/bi'
-import { services } from '@/lib/mockData'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { allServicesQuery } from '@/lib/queries'
+import type { SanityService } from '@/lib/types'
+import { urlFor } from '@/lib/sanityImage'
 import Breadcrumb from '@/components/shared/Breadcrumb'
 import ImagePlate from '@/components/shared/ImagePlate'
 
@@ -11,7 +14,8 @@ export const metadata: Metadata = {
     'Channel signs, dimensional signs, illuminated signs, vehicle wraps, window graphics, banners, decals and apparel — every sign your Atlantic Canadian business will ever need.',
 }
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const services = await sanityFetch<SanityService[]>(allServicesQuery)
   return (
     <>
       {/* Hero */}
@@ -52,7 +56,8 @@ export default function ServicesPage() {
                 {/* Image */}
                 <div className={`lg:[direction:ltr] ${isEven ? 'lg:pl-12' : 'lg:pr-12'}`}>
                   <ImagePlate
-                    alt={service.name}
+                    src={service.image ? urlFor(service.image).width(800).height(450).fit('crop').url() : undefined}
+                    alt={service.image?.alt ?? service.name}
                     aspectRatio="16/9"
                     className="w-full"
                   />

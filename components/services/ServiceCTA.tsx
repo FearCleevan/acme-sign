@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import type { Service } from '@/lib/types'
+import type { SanityService } from '@/lib/types'
 
 const processSteps = [
   { num: '01', title: 'Consultation', desc: 'We discuss your project, goals, and site requirements.' },
@@ -9,7 +9,7 @@ const processSteps = [
 ]
 
 interface ServiceCTAProps {
-  service: Service
+  service: SanityService
 }
 
 export default function ServiceCTA({ service }: ServiceCTAProps) {

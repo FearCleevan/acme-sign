@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { services } from '@/lib/mockData'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { serviceBySlugQuery, allServiceSlugsQuery } from '@/lib/queries'
+import type { SanityService } from '@/lib/types'
 import ServiceHero from '@/components/services/ServiceHero'
 import ServiceFeatures from '@/components/services/ServiceFeatures'
 import ServiceGallery from '@/components/services/ServiceGallery'
@@ -33,12 +35,13 @@ const headlineMap: Record<string, string> = {
 }
 
 export async function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }))
+  const slugs = await sanityFetch<{ slug: string }[]>(allServiceSlugsQuery)
+  return slugs.filter((s) => s.slug).map((s) => ({ slug: s.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const service = services.find((s) => s.slug === slug)
+  const service = await sanityFetch<SanityService | null>(serviceBySlugQuery, { slug })
   if (!service) return {}
   return {
     title: service.metaTitle,
@@ -48,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServicePage({ params }: Props) {
   const { slug } = await params
-  const service = services.find((s) => s.slug === slug)
+  const service = await sanityFetch<SanityService | null>(serviceBySlugQuery, { slug })
 
   if (!service) notFound()
 

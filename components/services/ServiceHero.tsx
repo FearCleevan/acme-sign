@@ -1,10 +1,11 @@
 import Link from 'next/link'
-import type { Service } from '@/lib/types'
+import type { SanityService } from '@/lib/types'
+import { urlFor } from '@/lib/sanityImage'
 import Breadcrumb from '@/components/shared/Breadcrumb'
 import ImagePlate from '@/components/shared/ImagePlate'
 
 interface ServiceHeroProps {
-  service: Service
+  service: SanityService
   eyebrow: string
   headline: string
 }
@@ -46,7 +47,8 @@ export default function ServiceHero({ service, eyebrow, headline }: ServiceHeroP
 
           {/* Right — image */}
           <ImagePlate
-            alt={`${service.name} — Acme Sign & Graphics`}
+            src={service.image ? urlFor(service.image).width(900).height(675).fit('crop').url() : undefined}
+            alt={service.image?.alt ?? `${service.name} — Acme Sign & Graphics`}
             aspectRatio="4/3"
             dark
             className="w-full"

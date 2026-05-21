@@ -35,7 +35,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: {
     template: '%s | Acme Sign & Graphics — Halifax NS',
-    default: 'Sign Company Halifax NS | Acme Sign & Graphics Co.',
+    default: 'Acme Sign & Graphics Co.',
   },
   description:
     'Acme Sign & Graphics Co. — 42 years serving Atlantic Canada. Vehicle wraps, LED signs, channel signs, dimensional signs, window graphics, banners and apparel. Dartmouth, Nova Scotia.',

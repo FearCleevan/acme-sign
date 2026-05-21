@@ -1,8 +1,8 @@
 import { BiCheckCircle } from 'react-icons/bi'
-import type { Service } from '@/lib/types'
+import type { SanityService } from '@/lib/types'
 
 interface ServiceFeaturesProps {
-  service: Service
+  service: SanityService
 }
 
 export default function ServiceFeatures({ service }: ServiceFeaturesProps) {
