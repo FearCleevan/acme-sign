@@ -44,7 +44,7 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
       />
       {/* Hero */}
-      <section className="canvas-dark pt-[72px]">
+      <section className="canvas-dark pt-18">
         <div className="container-site py-14 lg:py-20">
           <Breadcrumb
             crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
@@ -145,7 +145,7 @@ export default function ContactPage() {
                 </p>
                 <Link
                   href="/quote"
-                  className="inline-flex items-center justify-center min-h-[52px] px-8 font-display text-[18px] tracking-[0.05em] uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark transition-all duration-200 hover:-translate-y-px"
+                  className="inline-flex items-center justify-center min-h-13 px-8 font-display text-[18px] tracking-wider uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark transition-all duration-200 hover:-translate-y-px"
                 >
                   Get a Free Quote →
                 </Link>
@@ -162,6 +162,27 @@ export default function ContactPage() {
               </div>
               <ContactForm />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="bg-chalk-mid">
+        <div className="container-site py-12">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-signal mb-4">
+            FIND OUR SHOP
+          </p>
+          <div className="overflow-hidden rounded-card border border-chalk-deep" style={{ height: 420 }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2838.8776834985547!2d-63.5906098!3d44.7047758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b5a26dbf6e1ce91%3A0x9caccc40ecab06d0!2sAcme%20Sign%20%26%20Graphics%20Co!5e0!3m2!1sen!2sca!4v1716000000000!5m2!1sen!2sca"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Acme Sign & Graphics Co. — 25 Raddall Avenue, Unit 4, Dartmouth NS"
+            />
           </div>
         </div>
       </section>
