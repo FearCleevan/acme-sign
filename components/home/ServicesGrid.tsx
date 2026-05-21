@@ -35,8 +35,9 @@ export default function ServicesGrid() {
             className="lg:max-w-[42ch]"
           />
           <div className="flex flex-col gap-3 lg:text-right lg:pb-2">
-            <p className="font-sans text-[16px] text-iron-soft max-w-[36ch]">
-              From a single door decal to a complete building identification package — we&apos;ve been doing this since 1982.
+            <p className="font-sans text-[16px] text-iron-soft max-w-[38ch]">
+              Whether you need one sign or several thousands, we can advise you on the best
+              materials and production methods — solutions that fit all budgets.
             </p>
             <Link
               href="/services"

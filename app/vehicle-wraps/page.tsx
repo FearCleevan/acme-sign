@@ -17,19 +17,19 @@ const wrapTypes = [
   {
     title: 'Full Vehicle Wrap',
     description:
-      'Complete coverage from bumper to bumper. Maximum brand impact and the best protection for your vehicle\'s original paint. Ideal for high-visibility commercial vehicles.',
+      'Transform your vehicle into a rolling canvas with full coverage from bumper to bumper — vibrant graphics and customized designs that cover every inch. Maximum brand impact, plus protection for your original paint.',
     price: 'From $2,500',
   },
   {
     title: 'Partial Wrap',
     description:
-      'Strategic coverage — typically the rear, sides, or doors. Combines wrapped panels with matching cut vinyl for a cohesive look at a lower price point.',
+      'Achieve a striking look with partial wraps that accentuate specific areas of your vehicle — typically the rear, sides, or doors. A cost-effective yet impactful solution for businesses that want visibility without full coverage.',
     price: 'From $800',
   },
   {
     title: 'Fleet Graphics',
     description:
-      'Consistent branding across multiple vehicles. Volume pricing available. We manage entire fleet projects from design through installation, keeping your brand on every road.',
+      'Make a cohesive statement across your entire fleet with uniform graphics that enhance brand visibility and professionalism. Volume pricing available — we manage entire projects from design through installation.',
     price: 'Volume pricing',
   },
 ]
@@ -92,6 +92,11 @@ export default function VehicleWrapsPage() {
             <h2 className="font-display text-display-md leading-[0.97] tracking-[0.02em] text-steel">
               WHY VEHICLE WRAPS WORK.
             </h2>
+            <p className="font-sans text-[16px] text-iron-soft mt-4 max-w-[52ch] mx-auto leading-relaxed">
+              Whether you have a single vehicle or an entire fleet, we have the expertise and
+              creativity to deliver wraps that make a lasting impression and serve as a powerful
+              marketing tool for your business.
+            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
@@ -125,6 +130,22 @@ export default function VehicleWrapsPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Mobile Canvas callout ─────────────────────────────────────────── */}
+      <section className="bg-steel-dark py-12 lg:py-16">
+        <div className="container-site max-w-[860px]">
+          <div className="border-l-[4px] border-signal pl-8 flex flex-col gap-3">
+            <p className="font-serif italic text-[clamp(18px,2.5vw,26px)] text-[#F0EDE6] leading-relaxed">
+              &ldquo;Your vehicle serves as a mobile canvas for your corporate identity. Strategically
+              placed logos, taglines, and brand elements ensure that your company makes a statement
+              without uttering a word — working for you around the clock without any additional effort.&rdquo;
+            </p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
+              ACME SIGN & GRAPHICS CO. · EST. 1982
+            </p>
           </div>
         </div>
       </section>

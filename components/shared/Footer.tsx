@@ -69,8 +69,9 @@ export default function Footer() {
               </div>
 
               <p className="font-sans text-[14px] leading-relaxed text-[#9A9490]">
-                42 years of signs, wraps, and graphics for businesses across
-                Atlantic Canada. Family-owned, Dartmouth-based, still answering
+                Specializing in highly effective signs, programmable LED displays,
+                vehicle wraps, custom apparel, and branding assets for businesses
+                of any size across Atlantic Canada. Family-owned. Still answering
                 the phone ourselves.
               </p>
 
@@ -151,6 +152,9 @@ export default function Footer() {
                 >
                   acmesign01@gmail.com
                 </a>
+                <p className="font-mono text-[11px] tracking-[0.08em] text-iron-soft">
+                  Fax: (902) 481-0511
+                </p>
               </div>
 
               <a

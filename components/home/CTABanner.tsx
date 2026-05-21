@@ -7,8 +7,9 @@ export default function CTABanner() {
         <h2 className="font-display text-display-lg leading-[0.96] tracking-[0.02em] text-steel max-w-[18ch] text-balance">
           READY TO MAKE YOUR BUSINESS IMPOSSIBLE TO IGNORE?
         </h2>
-        <p className="font-sans text-[17px] text-steel-dark max-w-[46ch]">
-          Get a free consultation and quote from Atlantic Canada&apos;s most experienced sign team.
+        <p className="font-sans text-[17px] text-steel-dark max-w-[48ch]">
+          We provide the signs and services your organization needs to thrive through effective
+          communication. Free consultation — results that exceed your expectations.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
           <Link

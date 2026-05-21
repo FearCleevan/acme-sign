@@ -55,8 +55,35 @@ export default async function ServicePage({ params }: Props) {
   const eyebrow = categoryMap[slug] ?? 'SIGN SERVICES'
   const headline = headlineMap[slug] ?? service.name.toUpperCase() + '.'
 
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.name,
+    description: service.fullDescription,
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Acme Sign & Graphics Co.',
+      url: 'https://acmesign.ca',
+      telephone: '+1-902-481-1007',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '25 Raddall Avenue, Unit 4',
+        addressLocality: 'Dartmouth',
+        addressRegion: 'Nova Scotia',
+        postalCode: 'B3B 1L4',
+        addressCountry: 'CA',
+      },
+    },
+    areaServed: 'Atlantic Canada',
+    url: `https://acmesign.ca/services/${service.slug}`,
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <ServiceHero service={service} eyebrow={eyebrow} headline={headline} />
       <ServiceFeatures service={service} />
       <ServiceGallery serviceSlug={slug} serviceName={service.name} />

@@ -29,7 +29,9 @@ export default function ServicesPage() {
               EVERY SIGN YOUR BUSINESS WILL EVER NEED.
             </h1>
             <p className="font-sans text-[17px] text-[#C8C4BC] leading-relaxed">
-              From a single door decal to a complete building identification package. Acme Sign has been doing this since 1982.
+              Whether you&apos;re a small local business or a large corporation, our design team
+              will collaborate with you to understand your brand identity, target audience, and
+              specific requirements — then build something that lasts.
             </p>
           </div>
         </div>
@@ -85,14 +87,40 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Full product catalog strip */}
+      <section className="bg-steel-dark py-12">
+        <div className="container-site">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-signal mb-6">
+            FULL PRODUCT CATALOG
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              'Banners', 'Vehicle Wraps', 'Safety & Parking Signs', 'Planter Box Signs',
+              'Storefront Signs', 'Window Graphics', 'Sandwich Boards', 'Vehicle Graphics',
+              'LED Displays', 'Message Boards', 'Decals & Stickers', 'Pop-Up Displays',
+              'Vinyl Installation', 'Illuminated Signs', 'Dimensional Signs',
+              'Apparel', 'Screen Printing', 'Embroidery', 'Graphic Design', 'Sign Service',
+            ].map((item) => (
+              <span
+                key={item}
+                className="font-mono text-[10px] uppercase tracking-[0.14em] border border-steel-light text-iron-soft px-3 py-1.5"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Bottom CTA */}
       <section className="bg-signal">
         <div className="container-site py-16 flex flex-col items-center text-center gap-5">
           <h2 className="font-display text-display-md leading-[0.97] tracking-[0.02em] text-steel">
             NOT SURE WHAT YOU NEED?
           </h2>
-          <p className="font-sans text-[17px] text-steel-dark max-w-[46ch]">
-            Tell us about your business and location. We&apos;ll recommend the right sign type for your goals and budget.
+          <p className="font-sans text-[17px] text-steel-dark max-w-[50ch]">
+            From illuminated channel letters to captivating digital displays, we have the
+            expertise to bring your ideas to life. Tell us what you need — we&apos;ll handle the rest.
           </p>
           <Link
             href="/quote"

@@ -29,6 +29,7 @@ export default function FAQAccordion({ items, light = false }: FAQAccordionProps
                 : 'text-[#F0EDE6] hover:text-signal'
             }`}
             aria-expanded={open === i}
+            aria-controls={`faq-panel-${i}`}
           >
             <span className="font-sans text-[16px] font-medium leading-snug">{item.question}</span>
             <motion.span
@@ -43,6 +44,7 @@ export default function FAQAccordion({ items, light = false }: FAQAccordionProps
           <AnimatePresence initial={false}>
             {open === i && (
               <motion.div
+                id={`faq-panel-${i}`}
                 key="content"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}

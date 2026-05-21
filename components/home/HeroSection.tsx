@@ -79,15 +79,20 @@ export default function HeroSection() {
             </motion.h1>
 
             {/* Subheadline */}
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.55 }}
-              className="font-serif italic text-[clamp(16px,2vw,22px)] text-[rgba(244,242,238,0.8)] max-w-[44ch] leading-relaxed"
+              className="flex flex-col gap-2"
             >
-              42 years of signs, wraps, and graphics for Atlantic Canadian businesses.
-              Built to last. Designed to be seen.
-            </motion.p>
+              <p className="font-serif italic text-[clamp(16px,2vw,22px)] text-signal/80 leading-none tracking-wide">
+                Let us help you make a great first impression.
+              </p>
+              <p className="font-sans text-[clamp(14px,1.5vw,17px)] text-[rgba(244,242,238,0.7)] max-w-[48ch] leading-relaxed">
+                42 years serving Atlantic Canadian businesses of any size — from a single door decal
+                to a complete fleet wrap program. Built to last. Designed to be seen.
+              </p>
+            </motion.div>
 
             {/* CTA row */}
             <motion.div

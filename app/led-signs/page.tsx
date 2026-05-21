@@ -17,25 +17,25 @@ const ledTypes = [
   {
     title: 'Indoor LED',
     description:
-      'Digital menu boards, retail promotional displays, lobby signage. High-resolution panels with vibrant colours visible in any lighting condition.',
+      'Elevate your indoor spaces with vibrant and customizable LED displays for retail, corporate events, trade shows, and more. Perfect for any business, church, school, or event.',
     icon: '◉',
   },
   {
     title: 'Outdoor LED',
     description:
-      'Weatherproof programmable message centres for storefronts, plazas, and roadsides. Built for Atlantic Canadian winters — visibility up to 500 feet.',
+      'Make a bold statement with weather-resistant outdoor LED displays suitable for advertising, stadiums, public spaces, and dynamic storefronts. Built for Atlantic Canadian winters — visibility up to 500 feet.',
     icon: '◈',
   },
   {
     title: 'LED Video Wall',
     description:
-      'Full-colour, high-resolution modular video displays. Perfect for events, showrooms, and large-format advertising. Configurable to virtually any size.',
+      'Immerse your audience with seamless, high-resolution LED video walls ideal for conferences, control rooms, and entertainment venues. Configurable to virtually any size.',
     icon: '▣',
   },
   {
     title: 'Digital Signage',
     description:
-      'Turnkey digital display solutions with content management software. Schedule messages, promotions, and announcements from any device.',
+      'Stay ahead of the curve with our versatile digital signage solutions, allowing you to deliver dynamic content and engage your audience in real-time from any device.',
     icon: '◧',
   },
 ]
