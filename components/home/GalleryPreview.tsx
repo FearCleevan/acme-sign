@@ -1,9 +1,10 @@
 import Link from 'next/link'
-import { galleryItems } from '@/lib/mockData'
+import type { SanityGalleryItem } from '@/lib/types'
+import { urlFor } from '@/lib/sanityImage'
 import ImagePlate from '@/components/shared/ImagePlate'
 
-export default function GalleryPreview() {
-  const featured = galleryItems.slice(0, 6)
+export default function GalleryPreview({ items }: { items: SanityGalleryItem[] }) {
+  const featured = items.slice(0, 6)
 
   const categoryLabel = (cat: string) =>
     cat.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
@@ -41,7 +42,8 @@ export default function GalleryPreview() {
           >
             <div className="aspect-4/3 lg:aspect-auto lg:h-full min-h-[300px]">
               <ImagePlate
-                alt={featured[0]?.title ?? 'Gallery item'}
+                src={featured[0]?.image ? urlFor(featured[0].image).width(800).height(533).fit('crop').url() : undefined}
+                alt={featured[0]?.image?.alt ?? featured[0]?.title ?? 'Gallery item'}
                 aspectRatio="3/2"
                 dark
                 className="w-full h-full"
@@ -66,7 +68,8 @@ export default function GalleryPreview() {
             >
               <div className="relative">
                 <ImagePlate
-                  alt={item.title}
+                  src={item.image ? urlFor(item.image).width(400).height(300).fit('crop').url() : undefined}
+                  alt={item.image?.alt ?? item.title}
                   aspectRatio="4/3"
                   dark
                   className="w-full"
@@ -91,7 +94,8 @@ export default function GalleryPreview() {
               <div className="relative">
                 <div className="relative max-h-[220px] overflow-hidden">
                   <ImagePlate
-                    alt={featured[5].title}
+                    src={featured[5].image ? urlFor(featured[5].image).width(1200).height(675).fit('crop').url() : undefined}
+                    alt={featured[5].image?.alt ?? featured[5].title}
                     aspectRatio="16/9"
                     dark
                     className="w-full"

@@ -1,9 +1,10 @@
-import type { TeamMember } from '@/lib/types'
+import type { SanityTeamMember } from '@/lib/types'
+import { urlFor } from '@/lib/sanityImage'
 import ImagePlate from '@/components/shared/ImagePlate'
 import Eyebrow from '@/components/shared/Eyebrow'
 
 interface TeamSectionProps {
-  members: TeamMember[]
+  members: SanityTeamMember[]
 }
 
 export default function TeamSection({ members }: TeamSectionProps) {
@@ -28,7 +29,8 @@ export default function TeamSection({ members }: TeamSectionProps) {
                 }`}
               >
                 <ImagePlate
-                  alt={`${member.name} — ${member.title}`}
+                  src={member.image ? urlFor(member.image).width(400).height(isFounder ? 533 : 400).fit('crop').url() : undefined}
+                  alt={member.image?.alt ?? `${member.name} — ${member.title}`}
                   aspectRatio={isFounder ? '3/4' : '1/1'}
                   className="w-full"
                 />

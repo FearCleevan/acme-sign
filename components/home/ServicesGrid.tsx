@@ -9,7 +9,9 @@ import {
   BiTag,
 } from 'react-icons/bi'
 import { RiShirtLine } from 'react-icons/ri'
-import { services } from '@/lib/mockData'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { allServicesQuery } from '@/lib/queries'
+import type { SanityService } from '@/lib/types'
 import SectionHeading from '@/components/shared/SectionHeading'
 
 const iconMap: Record<string, React.ElementType> = {
@@ -23,7 +25,8 @@ const iconMap: Record<string, React.ElementType> = {
   apparel: RiShirtLine,
 }
 
-export default function ServicesGrid() {
+export default async function ServicesGrid() {
+  const services = await sanityFetch<SanityService[]>(allServicesQuery)
   return (
     <section className="bg-chalk py-section">
       <div className="container-site">

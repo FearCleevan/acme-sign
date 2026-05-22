@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { testimonials as allTestimonials } from '@/lib/mockData'
+import type { Testimonial } from '@/lib/types'
 import Eyebrow from '@/components/shared/Eyebrow'
 
 /* ── Card themes — cycles through Acme brand palette ─────────── */
@@ -13,11 +13,6 @@ const CARD_THEMES = [
   { bg: '#1E3A2A', border: '#F5C518', textColor: '#F0EDE6', mutedColor: 'rgba(240,237,230,0.5)' },
   { bg: '#1E2124', border: '#FBD84A', textColor: '#F4F2EE', mutedColor: 'rgba(244,242,238,0.5)' },
 ]
-
-const carouselData = allTestimonials.slice(0, 5).map((t, i) => ({
-  ...t,
-  ...CARD_THEMES[i % CARD_THEMES.length],
-}))
 
 /* ── Responsive card dimensions ──────────────────────────────── */
 interface Dims { cw: number; ch: number; spacing: number }
@@ -37,7 +32,12 @@ const instant    = { duration: 0 }
 const DRAG_THRESH = 60
 const TILTS       = [-2, 1.5, -1, 2.5, -1.5]
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) {
+  const carouselData = testimonials.slice(0, 5).map((t, i) => ({
+    ...t,
+    ...CARD_THEMES[i % CARD_THEMES.length],
+  }))
+
   const [active,  setActive]  = useState(2)
   const [flipped, setFlipped] = useState<Record<number, boolean>>({})
   const [dims,    setDims]    = useState<Dims>({ cw: 300, ch: 420, spacing: 240 })

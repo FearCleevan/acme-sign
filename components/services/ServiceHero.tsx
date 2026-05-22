@@ -3,6 +3,7 @@ import type { SanityService } from '@/lib/types'
 import { urlFor } from '@/lib/sanityImage'
 import Breadcrumb from '@/components/shared/Breadcrumb'
 import ImagePlate from '@/components/shared/ImagePlate'
+import ServiceImageCarousel from './ServiceImageCarousel'
 
 interface ServiceHeroProps {
   service: SanityService
@@ -11,6 +12,18 @@ interface ServiceHeroProps {
 }
 
 export default function ServiceHero({ service, eyebrow, headline }: ServiceHeroProps) {
+  const validGalleryImages = (service.galleryImages ?? []).filter(
+    (img) => img?.asset?._ref
+  )
+
+  const carouselImages =
+    validGalleryImages.length > 0
+      ? validGalleryImages.map((img) => ({
+          url: urlFor(img).width(800).height(600).fit('crop').url(),
+          alt: img.alt ?? `${service.name} project — Acme Sign & Graphics`,
+        }))
+      : null
+
   return (
     <section className="canvas-dark pt-[72px]">
       <div className="container-site py-14 lg:py-20">
@@ -45,14 +58,18 @@ export default function ServiceHero({ service, eyebrow, headline }: ServiceHeroP
             </div>
           </div>
 
-          {/* Right — image */}
-          <ImagePlate
-            src={service.image ? urlFor(service.image).width(900).height(675).fit('crop').url() : undefined}
-            alt={service.image?.alt ?? `${service.name} — Acme Sign & Graphics`}
-            aspectRatio="4/3"
-            dark
-            className="w-full"
-          />
+          {/* Right — carousel if gallery images exist, else single image */}
+          {carouselImages ? (
+            <ServiceImageCarousel images={carouselImages} />
+          ) : (
+            <ImagePlate
+              src={service.image ? urlFor(service.image).width(900).height(675).fit('crop').url() : undefined}
+              alt={service.image?.alt ?? `${service.name} — Acme Sign & Graphics`}
+              aspectRatio="4/3"
+              dark
+              className="w-full"
+            />
+          )}
         </div>
       </div>
     </section>

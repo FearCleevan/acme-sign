@@ -1,11 +1,16 @@
 import type { MetadataRoute } from 'next'
-import { services } from '@/lib/mockData'
-import { blogPosts } from '@/lib/mockData'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { allServiceSlugsQuery, allBlogSlugQuery } from '@/lib/queries'
 
 const BASE_URL = 'https://acmesign.ca'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()
+
+  const [serviceSlugs, blogSlugs] = await Promise.all([
+    sanityFetch<{ slug: string }[]>(allServiceSlugsQuery),
+    sanityFetch<{ slug: string }[]>(allBlogSlugQuery),
+  ])
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL,                              lastModified: now, changeFrequency: 'weekly',  priority: 1.0 },
@@ -20,19 +25,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/blog`,                    lastModified: now, changeFrequency: 'weekly',  priority: 0.7 },
   ]
 
-  const servicePages: MetadataRoute.Sitemap = services.map((s) => ({
-    url: `${BASE_URL}/services/${s.slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  }))
+  const servicePages: MetadataRoute.Sitemap = serviceSlugs
+    .filter((s) => s.slug)
+    .map((s) => ({
+      url: `${BASE_URL}/services/${s.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    }))
 
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map((p) => ({
-    url: `${BASE_URL}/blog/${p.slug}`,
-    lastModified: new Date(p.publishedAt),
-    changeFrequency: 'yearly',
-    priority: 0.6,
-  }))
+  const blogPages: MetadataRoute.Sitemap = blogSlugs
+    .filter((p) => p.slug)
+    .map((p) => ({
+      url: `${BASE_URL}/blog/${p.slug}`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    }))
 
   return [...staticPages, ...servicePages, ...blogPages]
 }

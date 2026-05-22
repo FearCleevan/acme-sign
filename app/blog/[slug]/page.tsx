@@ -3,19 +3,24 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import ImagePlate from '@/components/shared/ImagePlate'
 import Eyebrow from '@/components/shared/Eyebrow'
-import { blogPosts } from '@/lib/mockData'
+import PortableTextRenderer from '@/components/shared/PortableTextRenderer'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { blogPostBySlugQuery, allBlogSlugQuery } from '@/lib/queries'
+import type { SanityBlogPost } from '@/lib/types'
+import { urlFor } from '@/lib/sanityImage'
 
 interface Props {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }))
+  const slugs = await sanityFetch<{ slug: string }[]>(allBlogSlugQuery)
+  return slugs.filter((s) => s.slug).map((s) => ({ slug: s.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const post = blogPosts.find((p) => p.slug === slug)
+  const post = await sanityFetch<SanityBlogPost | null>(blogPostBySlugQuery, { slug })
   if (!post) return {}
   return {
     title: post.metaTitle,
@@ -23,73 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-function renderInline(text: string): React.ReactNode {
-  const parts = text.split(/\*\*([^*]+)\*\*/)
-  return parts.map((part, i) =>
-    i % 2 === 1 ? (
-      <strong key={i} className="font-semibold text-steel">
-        {part}
-      </strong>
-    ) : (
-      part
-    )
-  )
-}
-
-function renderBody(body: string): React.ReactNode {
-  const blocks = body.trim().split(/\n\n+/)
-
-  return blocks.map((block, i) => {
-    const headingMatch = block.match(/^\*\*([^*]+)\*\*$/)
-    if (headingMatch) {
-      return (
-        <h2
-          key={i}
-          className="font-display text-[28px] lg:text-[34px] leading-[1.05] tracking-[0.02em] text-steel mt-10 mb-4"
-        >
-          {headingMatch[1].toUpperCase()}
-        </h2>
-      )
-    }
-
-    const lines = block.split('\n')
-    const bulletLines = lines.filter((l) => l.startsWith('- '))
-    const textLines = lines.filter((l) => !l.startsWith('- '))
-
-    if (bulletLines.length > 0) {
-      return (
-        <div key={i} className="flex flex-col gap-3">
-          {textLines.length > 0 && textLines.join(' ').trim() !== '' && (
-            <p className="font-sans text-[17px] text-iron leading-[1.75]">
-              {renderInline(textLines.join(' ').trim())}
-            </p>
-          )}
-          <ul className="flex flex-col gap-2 pl-4">
-            {bulletLines.map((line, j) => (
-              <li
-                key={j}
-                className="flex items-start gap-3 font-sans text-[16px] text-iron leading-relaxed"
-              >
-                <span className="text-signal mt-1 shrink-0">—</span>
-                {renderInline(line.slice(2))}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
-
-    return (
-      <p key={i} className="font-sans text-[17px] text-iron leading-[1.75]">
-        {renderInline(block)}
-      </p>
-    )
-  })
-}
-
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
-  const post = blogPosts.find((p) => p.slug === slug)
+  const post = await sanityFetch<SanityBlogPost | null>(blogPostBySlugQuery, { slug })
 
   if (!post) notFound()
 
@@ -121,7 +62,6 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Hero */}
       <section className="canvas-dark pt-[72px]">
         <div className="container-site max-w-[780px] py-12 lg:py-16">
-          {/* Back to Blog */}
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal hover:text-signal-dark transition-colors mb-10"
@@ -153,7 +93,8 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Hero image */}
       <div className="container-site max-w-[780px] -mt-2 lg:-mt-4">
         <ImagePlate
-          alt={post.title}
+          src={post.image ? urlFor(post.image).width(780).height(439).fit('crop').url() : undefined}
+          alt={post.image?.alt ?? post.title}
           aspectRatio="16/9"
           className="rounded-none"
         />
@@ -162,9 +103,7 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Article body */}
       <section className="bg-chalk py-14 lg:py-20">
         <div className="container-site max-w-[720px]">
-          <div className="flex flex-col gap-6">
-            {renderBody(post.body)}
-          </div>
+          <PortableTextRenderer value={post.body} />
 
           {/* Back to Blog (bottom) */}
           <div className="mt-14 pt-8 border-t border-chalk-deep">

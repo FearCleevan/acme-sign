@@ -133,7 +133,7 @@ export default function GalleryInteractive({ items }: GalleryInteractiveProps) {
                       aria-label={`Open ${item.title}`}
                     >
                       <ImagePlate
-                        src={item.image ? urlFor(item.image).width(800).height(item.featured ? 450 : 600).fit('crop').url() : undefined}
+                        src={item.image ? urlFor(item.image).width(1000).height(item.featured ? 450 : 600).fit('crop').url() : undefined}
                         alt={item.image?.alt ?? item.title}
                         aspectRatio={item.featured ? '16/9' : '4/3'}
                         dark

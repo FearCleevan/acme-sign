@@ -3,7 +3,10 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/shared/Breadcrumb'
 import Eyebrow from '@/components/shared/Eyebrow'
 import ImagePlate from '@/components/shared/ImagePlate'
-import { blogPosts } from '@/lib/mockData'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { allBlogPostsQuery } from '@/lib/queries'
+import type { SanityBlogPost } from '@/lib/types'
+import { urlFor } from '@/lib/sanityImage'
 
 export const metadata: Metadata = {
   title: 'Blog | Acme Sign & Graphics Co.',
@@ -11,7 +14,8 @@ export const metadata: Metadata = {
     'Sign industry insights, buying guides, and local expertise from Acme Sign & Graphics Co. — serving Halifax, Dartmouth, and Atlantic Canada since 1982.',
 }
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const blogPosts = await sanityFetch<SanityBlogPost[]>(allBlogPostsQuery)
   return (
     <>
       {/* Hero */}
@@ -39,7 +43,8 @@ export default function BlogPage() {
                 {/* Image */}
                 <Link href={`/blog/${post.slug}`} className="block">
                   <ImagePlate
-                    alt={post.title}
+                    src={post.image ? urlFor(post.image).width(600).height(338).fit('crop').url() : undefined}
+                    alt={post.image?.alt ?? post.title}
                     aspectRatio="16/9"
                     className="rounded-none"
                   />

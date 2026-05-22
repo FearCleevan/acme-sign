@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
-import { teamMembers, serviceAreas } from '@/lib/mockData'
+import { serviceAreas } from '@/lib/mockData'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { allTeamMembersQuery } from '@/lib/queries'
+import type { SanityTeamMember } from '@/lib/types'
 import AboutHero from '@/components/about/AboutHero'
 import FounderSection from '@/components/about/FounderSection'
 import TeamSection from '@/components/about/TeamSection'
@@ -19,7 +22,8 @@ const aboutStats = [
   { value: '48HR', label: 'Quote Turnaround', sub: 'Average' },
 ]
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const teamMembers = await sanityFetch<SanityTeamMember[]>(allTeamMembersQuery)
   return (
     <>
       <AboutHero />

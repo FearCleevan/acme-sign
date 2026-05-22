@@ -3,11 +3,17 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BiX, BiChevronDown } from 'react-icons/bi'
-import { services } from '@/lib/mockData'
+interface NavService {
+  id: string
+  slug: string
+  name: string
+  shortDescription: string
+}
 
 interface MobileDrawerProps {
   isOpen: boolean
   onClose: () => void
+  services: NavService[]
 }
 
 const navLinks = [
@@ -19,7 +25,7 @@ const navLinks = [
   { label: 'Contact', href: '/contact' },
 ]
 
-export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
+export default function MobileDrawer({ isOpen, onClose, services }: MobileDrawerProps) {
   const [servicesOpen, setServicesOpen] = useState(false)
 
   return (

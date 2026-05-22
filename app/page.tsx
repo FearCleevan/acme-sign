@@ -9,8 +9,16 @@ import LEDSection from '@/components/home/LEDSection'
 import TestimonialsSection from '@/components/home/TestimonialsSection'
 import CTABanner from '@/components/home/CTABanner'
 import FadeInSection from '@/components/shared/FadeInSection'
+import { sanityFetch } from '@/lib/sanityFetch'
+import { allGalleryItemsQuery, allTestimonialsQuery } from '@/lib/queries'
+import type { SanityGalleryItem, Testimonial } from '@/lib/types'
 
-export default function Home() {
+export default async function Home() {
+  const [galleryItems, testimonials] = await Promise.all([
+    sanityFetch<SanityGalleryItem[]>(allGalleryItemsQuery),
+    sanityFetch<Testimonial[]>(allTestimonialsQuery),
+  ])
+
   return (
     <>
       <HeroSection />
@@ -26,13 +34,13 @@ export default function Home() {
         <StatsSection />
       </FadeInSection>
       <FadeInSection>
-        <GalleryPreview />
+        <GalleryPreview items={galleryItems} />
       </FadeInSection>
       <FadeInSection>
         <LEDSection />
       </FadeInSection>
       <FadeInSection>
-        <TestimonialsSection />
+        <TestimonialsSection testimonials={testimonials} />
       </FadeInSection>
       <CTABanner />
     </>

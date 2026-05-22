@@ -80,7 +80,7 @@ export default function Nav({ services }: NavProps) {
       </header>
 
       {/* Mobile Drawer */}
-      <MobileDrawer isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <MobileDrawer isOpen={mobileOpen} onClose={() => setMobileOpen(false)} services={services} />
     </>
   )
 }

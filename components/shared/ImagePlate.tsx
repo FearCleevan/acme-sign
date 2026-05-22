@@ -45,7 +45,7 @@ export default function ImagePlate({
           src={src}
           alt={alt}
           fill
-          className="object-cover"
+          className="object-contain"
           priority={priority}
         />
       ) : (
