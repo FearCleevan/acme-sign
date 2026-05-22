@@ -41,6 +41,7 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
   const [active,  setActive]  = useState(2)
   const [flipped, setFlipped] = useState<Record<number, boolean>>({})
   const [dims,    setDims]    = useState<Dims>({ cw: 300, ch: 420, spacing: 240 })
+  const [mounted, setMounted] = useState(false)
   const prefersReduced        = useReducedMotion()
 
   const pointerStartX = useRef<number | null>(null)
@@ -48,6 +49,7 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
 
   /* ── Responsive watcher ── */
   useEffect(() => {
+    setMounted(true)
     function update() { setDims(calcDims(window.innerWidth)) }
     update()
     window.addEventListener('resize', update)
@@ -125,8 +127,11 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
         </p>
       </div>
 
-      {/* Card deck */}
-      <div
+      {/* Card deck — client-only to avoid Framer Motion hydration mismatch */}
+      {!mounted && (
+        <div style={{ height: dims.ch + 48 }} aria-hidden="true" />
+      )}
+      {mounted && <div
         className="relative"
         style={{ height: ch + 48 }}
         aria-live="polite"
@@ -325,7 +330,7 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
             </div>
           )
         })}
-      </div>
+      </div>}
 
       {/* Controls */}
       <div
