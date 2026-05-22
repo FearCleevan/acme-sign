@@ -143,7 +143,7 @@ export default function ArtworkGuidelinesPage() {
               </h2>
               <p className="font-sans text-[16px] text-iron leading-relaxed">
                 Vector files are resolution-independent and always preferred. For raster files,
-                resolution must be measured at the final output size — not the file's native size.
+                resolution must be measured at the final output size — not the file&apos;s native size.
               </p>
               <div className="border-l-[3px] border-signal pl-6 flex flex-col gap-3">
                 <div>
@@ -152,7 +152,7 @@ export default function ArtworkGuidelinesPage() {
                   <p className="font-sans text-[13px] text-iron-soft">at final printed output size</p>
                 </div>
                 <p className="font-sans text-[14px] text-iron leading-relaxed">
-                  A file that is 72 dpi at 1" cannot be stretched to 12" — it will print at approximately
+                  A file that is 72 dpi at 1&quot; cannot be stretched to 12&quot; — it will print at approximately
                   6 dpi and appear blurry. When in doubt, send us the highest-resolution version you have
                   and we&apos;ll advise.
                 </p>
