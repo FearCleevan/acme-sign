@@ -62,7 +62,7 @@ export default async function ServicesGrid() {
                 className="group relative bg-chalk-mid border border-chalk-deep rounded-card p-6 flex flex-col gap-4 hover:shadow-card-hover hover:-translate-y-1 transition-all duration-250 overflow-hidden"
               >
                 {/* Signal left border on hover */}
-                <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-signal origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-250" />
+                <span className="absolute left-0 top-0 bottom-0 w-0.75 bg-signal origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-250" />
 
                 <Icon size={40} className="text-signal shrink-0" aria-hidden="true" />
 

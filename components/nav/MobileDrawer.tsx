@@ -58,7 +58,7 @@ export default function MobileDrawer({ isOpen, onClose, services }: MobileDrawer
             <div className="flex items-center justify-between px-6 py-5 border-b border-steel-light">
               <Link href="/" onClick={onClose}>
                 <div className="flex items-center gap-2">
-                  <span className="block w-[3px] h-6 bg-signal" />
+                  <span className="block w-0.75 h-6 bg-signal" />
                   <div>
                     <div className="font-display text-[22px] tracking-[0.04em] text-chalk leading-none">
                       ACME SIGN
@@ -144,7 +144,7 @@ export default function MobileDrawer({ isOpen, onClose, services }: MobileDrawer
               <Link
                 href="/quote"
                 onClick={onClose}
-                className="w-full inline-flex items-center justify-center min-h-[56px] font-display text-[18px] tracking-[0.05em] uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark transition-colors"
+                className="w-full inline-flex items-center justify-center min-h-14 font-display text-[18px] tracking-wider uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark transition-colors"
               >
                 Get a Quote
               </Link>

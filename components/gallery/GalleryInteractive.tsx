@@ -76,7 +76,7 @@ export default function GalleryInteractive({ items }: GalleryInteractiveProps) {
   return (
     <>
       {/* ── Sticky filter bar ─────────────────────────────────────────────── */}
-      <div className="sticky top-[72px] z-40 bg-chalk border-b border-chalk-deep">
+      <div className="sticky top-18 z-40 bg-chalk border-b border-chalk-deep">
         <div className="container-site py-3">
           <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide">
             <div className="flex items-center gap-2 min-w-max">

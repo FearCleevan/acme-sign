@@ -19,7 +19,7 @@ export default function ServiceImageCarousel({ images }: ServiceImageCarouselPro
   const doubled = [...images, ...images]
 
   return (
-    <div className="relative overflow-hidden rounded-card h-[420px] lg:h-[600px]">
+    <div className="relative overflow-hidden rounded-card h-105 lg:h-150">
       <motion.div
         className="flex flex-col"
         animate={prefersReduced ? {} : { y: ['0%', '-50%'] }}

@@ -139,7 +139,7 @@ export default async function VehicleWrapsPage() {
 
       {/* ── Mobile Canvas callout ─────────────────────────────────────────── */}
       <section className="bg-steel-dark py-12 lg:py-16">
-        <div className="container-site max-w-[860px]">
+        <div className="container-site max-w-215">
           <div className="border-l-4 border-signal pl-8 flex flex-col gap-3">
             <p className="font-serif italic text-[clamp(18px,2.5vw,26px)] text-[#F0EDE6] leading-relaxed">
               &ldquo;Your vehicle serves as a mobile canvas for your corporate identity. Strategically
@@ -295,7 +295,7 @@ export default async function VehicleWrapsPage() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/quote?service=vehicle-wraps"
-              className="inline-flex items-center justify-center min-h-[52px] px-8 font-display text-[18px] tracking-[0.05em] uppercase rounded-btn bg-steel text-signal hover:bg-steel-mid transition-all duration-200 hover:-translate-y-px"
+              className="inline-flex items-center justify-center min-h-13 px-8 font-display text-[18px] tracking-wider uppercase rounded-btn bg-steel text-signal hover:bg-steel-mid transition-all duration-200 hover:-translate-y-px"
             >
               Get a Wrap Quote
             </Link>

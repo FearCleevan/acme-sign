@@ -40,7 +40,7 @@ export default function GalleryPreview({ items }: { items: SanityGalleryItem[] }
             href="/gallery"
             className="group relative overflow-hidden rounded-card lg:col-span-2 lg:row-span-2"
           >
-            <div className="aspect-4/3 lg:aspect-auto lg:h-full min-h-[300px]">
+            <div className="aspect-4/3 lg:aspect-auto lg:h-full min-h-75">
               <ImagePlate
                 src={featured[0]?.image ? urlFor(featured[0].image).width(800).height(533).fit('crop').url() : undefined}
                 alt={featured[0]?.image?.alt ?? featured[0]?.title ?? 'Gallery item'}
@@ -92,7 +92,7 @@ export default function GalleryPreview({ items }: { items: SanityGalleryItem[] }
               className="group relative overflow-hidden rounded-card lg:col-span-4"
             >
               <div className="relative">
-                <div className="relative max-h-[220px] overflow-hidden">
+                <div className="relative max-h-55 overflow-hidden">
                   <ImagePlate
                     src={featured[5].image ? urlFor(featured[5].image).width(1200).height(675).fit('crop').url() : undefined}
                     alt={featured[5].image?.alt ?? featured[5].title}

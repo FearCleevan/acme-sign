@@ -14,7 +14,7 @@ export default function NavActions() {
       {/* Quote CTA */}
       <Link
         href="/quote"
-        className="inline-flex items-center justify-center min-h-[40px] px-6 font-display text-[16px] tracking-[0.05em] uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark hover:shadow-cta hover:-translate-y-px transition-all duration-200"
+        className="inline-flex items-center justify-center min-h-10 px-6 font-display text-[16px] tracking-wider uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark hover:shadow-cta hover:-translate-y-px transition-all duration-200"
       >
         Get a Quote
       </Link>

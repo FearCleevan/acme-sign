@@ -69,7 +69,7 @@ export default function NavLinks({ services }: NavLinksProps) {
                 />
                 <span
                   className={cn(
-                    'absolute bottom-0 left-3 right-3 h-[2px] bg-signal origin-left transition-transform duration-200',
+                    'absolute bottom-0 left-3 right-3 h-0.5 bg-signal origin-left transition-transform duration-200',
                     isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                   )}
                 />
@@ -92,7 +92,7 @@ export default function NavLinks({ services }: NavLinksProps) {
             {link.label}
             <span
               className={cn(
-                'absolute bottom-0 left-3 right-3 h-[2px] bg-signal origin-left transition-transform duration-200',
+                'absolute bottom-0 left-3 right-3 h-0.5 bg-signal origin-left transition-transform duration-200',
                 isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
               )}
             />

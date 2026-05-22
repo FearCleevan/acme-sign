@@ -25,7 +25,7 @@ export default function ServiceHero({ service, eyebrow, headline }: ServiceHeroP
       : null
 
   return (
-    <section className="canvas-dark pt-[72px]">
+    <section className="canvas-dark pt-18">
       <div className="container-site py-14 lg:py-20">
         <Breadcrumb
           crumbs={[
@@ -51,7 +51,7 @@ export default function ServiceHero({ service, eyebrow, headline }: ServiceHeroP
             <div className="flex flex-wrap gap-4 pt-2">
               <Link
                 href={`/quote?service=${service.slug}`}
-                className="inline-flex items-center justify-center min-h-[52px] px-8 font-display text-[18px] tracking-[0.05em] uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark hover:shadow-cta hover:-translate-y-px transition-all duration-200"
+                className="inline-flex items-center justify-center min-h-13 px-8 font-display text-[18px] tracking-wider uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark hover:shadow-cta hover:-translate-y-px transition-all duration-200"
               >
                 {service.callToAction} →
               </Link>

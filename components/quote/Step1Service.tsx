@@ -102,7 +102,7 @@ export default function Step1Service({ selectedServices, onToggleService, onNext
         <button
           onClick={onNext}
           disabled={!canContinue}
-          className="inline-flex items-center justify-center min-h-[52px] px-10 font-display text-[18px] tracking-[0.05em] uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark transition-all duration-200 hover:-translate-y-px disabled:opacity-40 disabled:cursor-not-allowed disabled:translate-y-0"
+          className="inline-flex items-center justify-center min-h-13 px-10 font-display text-[18px] tracking-wider uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark transition-all duration-200 hover:-translate-y-px disabled:opacity-40 disabled:cursor-not-allowed disabled:translate-y-0"
         >
           Continue →
         </button>

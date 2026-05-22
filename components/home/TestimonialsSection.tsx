@@ -285,7 +285,7 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
                   >
                     {/* Signal accent bar */}
                     <span
-                      className="block w-8 h-[2px] mb-5 shrink-0"
+                      className="block w-8 h-0.5 mb-5 shrink-0"
                       style={{ backgroundColor: t.border }}
                       aria-hidden="true"
                     />

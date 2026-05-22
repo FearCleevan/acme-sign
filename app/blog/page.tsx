@@ -19,7 +19,7 @@ export default async function BlogPage() {
   return (
     <>
       {/* Hero */}
-      <section className="canvas-dark pt-[72px]">
+      <section className="canvas-dark pt-18">
         <div className="container-site py-14 lg:py-20">
           <Breadcrumb
             crumbs={[{ label: 'Home', href: '/' }, { label: 'Blog' }]}
@@ -108,7 +108,7 @@ export default async function BlogPage() {
           </div>
           <Link
             href="/quote"
-            className="inline-flex items-center justify-center min-h-[52px] px-8 font-display text-[18px] tracking-[0.05em] uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark transition-all duration-200 hover:-translate-y-px shrink-0"
+            className="inline-flex items-center justify-center min-h-13 px-8 font-display text-[18px] tracking-wider uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark transition-all duration-200 hover:-translate-y-px shrink-0"
           >
             Get a Free Quote →
           </Link>

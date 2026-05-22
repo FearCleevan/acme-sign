@@ -60,8 +60,8 @@ export default async function BlogPostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       {/* Hero */}
-      <section className="canvas-dark pt-[72px]">
-        <div className="container-site max-w-[780px] py-12 lg:py-16">
+      <section className="canvas-dark pt-18">
+        <div className="container-site max-w-195 py-12 lg:py-16">
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal hover:text-signal-dark transition-colors mb-10"
@@ -91,7 +91,7 @@ export default async function BlogPostPage({ params }: Props) {
       </section>
 
       {/* Hero image */}
-      <div className="container-site max-w-[780px] -mt-2 lg:-mt-4">
+      <div className="container-site max-w-195 -mt-2 lg:-mt-4">
         <ImagePlate
           src={post.image ? urlFor(post.image).width(780).height(439).fit('crop').url() : undefined}
           alt={post.image?.alt ?? post.title}
@@ -102,7 +102,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       {/* Article body */}
       <section className="bg-chalk py-14 lg:py-20">
-        <div className="container-site max-w-[720px]">
+        <div className="container-site max-w-180">
           <PortableTextRenderer value={post.body} />
 
           {/* Back to Blog (bottom) */}
@@ -119,9 +119,9 @@ export default async function BlogPostPage({ params }: Props) {
 
       {/* CTA strip */}
       <section className="canvas-dark py-16">
-        <div className="container-site max-w-[720px] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+        <div className="container-site max-w-180 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
           <div className="flex flex-col gap-3">
-            <div className="w-8 h-[2px] bg-signal" />
+            <div className="w-8 h-0.5 bg-signal" />
             <h2 className="font-display text-display-md leading-[0.97] tracking-[0.02em] text-[#F0EDE6]">
               NEED A SIGN FOR YOUR BUSINESS?
             </h2>
@@ -131,7 +131,7 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
           <Link
             href="/quote"
-            className="inline-flex items-center justify-center min-h-[52px] px-8 font-display text-[18px] tracking-[0.05em] uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark transition-all duration-200 hover:-translate-y-px shrink-0"
+            className="inline-flex items-center justify-center min-h-13 px-8 font-display text-[18px] tracking-wider uppercase rounded-btn bg-signal text-steel hover:bg-signal-dark transition-all duration-200 hover:-translate-y-px shrink-0"
           >
             Get a Free Quote →
           </Link>
