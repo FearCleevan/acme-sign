@@ -23,6 +23,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/quote`,                   lastModified: now, changeFrequency: 'yearly',  priority: 0.9 },
     { url: `${BASE_URL}/artwork-guidelines`,      lastModified: now, changeFrequency: 'yearly',  priority: 0.5 },
     { url: `${BASE_URL}/blog`,                    lastModified: now, changeFrequency: 'weekly',  priority: 0.7 },
+    { url: `${BASE_URL}/privacy-policy`,         lastModified: now, changeFrequency: 'yearly',  priority: 0.2 },
+    { url: `${BASE_URL}/terms`,                  lastModified: now, changeFrequency: 'yearly',  priority: 0.2 },
+    { url: `${BASE_URL}/accessibility`,          lastModified: now, changeFrequency: 'yearly',  priority: 0.2 },
   ]
 
   const servicePages: MetadataRoute.Sitemap = serviceSlugs
