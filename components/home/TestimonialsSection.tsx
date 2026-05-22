@@ -40,23 +40,21 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
 
   const [active,  setActive]  = useState(2)
   const [flipped, setFlipped] = useState<Record<number, boolean>>({})
-  const [dims,    setDims]    = useState<Dims>({ cw: 300, ch: 420, spacing: 240 })
-  const [mounted, setMounted] = useState(false)
+  const [dims,    setDims]    = useState<Dims | null>(null)
   const prefersReduced        = useReducedMotion()
 
   const pointerStartX = useRef<number | null>(null)
   const didNavigate   = useRef(false)
 
-  /* ── Responsive watcher ── */
+  /* ── Responsive watcher — dims=null until client mounts ── */
   useEffect(() => {
-    setMounted(true)
     function update() { setDims(calcDims(window.innerWidth)) }
     update()
     window.addEventListener('resize', update)
     return () => window.removeEventListener('resize', update)
   }, [])
 
-  const { cw, ch, spacing } = dims
+  const { cw, ch, spacing } = dims ?? { cw: 300, ch: 420, spacing: 240 }
 
   /* ── Navigation ── */
   function goTo(i: number) {
@@ -128,10 +126,10 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
       </div>
 
       {/* Card deck — client-only to avoid Framer Motion hydration mismatch */}
-      {!mounted && (
-        <div style={{ height: dims.ch + 48 }} aria-hidden="true" />
+      {dims === null && (
+        <div style={{ height: 468 }} aria-hidden="true" />
       )}
-      {mounted && <div
+      {dims !== null && <div
         className="relative"
         style={{ height: ch + 48 }}
         aria-live="polite"
