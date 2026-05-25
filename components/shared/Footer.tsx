@@ -17,6 +17,9 @@ const companyLinks = [
   { label: "Blog", href: "/blog" },
   { label: "Artwork Guidelines", href: "/artwork-guidelines" },
   { label: "Contact", href: "/contact" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms" },
+  { label: "Accessibility", href: "/accessibility" },
 ];
 
 export default function Footer() {
@@ -171,36 +174,12 @@ export default function Footer() {
 
         {/* Bottom micro-bar */}
         <div className="border-t border-steel-light">
-          <div className="container-site py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="container-site py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             {/* Copyright */}
             <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-iron-soft">
               © 2026 Acme Sign & Graphics Co. · Dartmouth, Nova Scotia · All
               Rights Reserved.
             </p>
-
-            {/* Legal links */}
-            <div className="flex items-center gap-4">
-              <Link
-                href="/privacy-policy"
-                className="font-mono text-[10px] uppercase tracking-[0.15em] text-iron-soft hover:text-signal transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <span className="text-steel-light select-none">·</span>
-              <Link
-                href="/terms"
-                className="font-mono text-[10px] uppercase tracking-[0.15em] text-iron-soft hover:text-signal transition-colors"
-              >
-                Terms
-              </Link>
-              <span className="text-steel-light select-none">·</span>
-              <Link
-                href="/accessibility"
-                className="font-mono text-[10px] uppercase tracking-[0.15em] text-iron-soft hover:text-signal transition-colors"
-              >
-                Accessibility
-              </Link>
-            </div>
 
             {/* Professional Credit */}
             <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-iron-soft">
