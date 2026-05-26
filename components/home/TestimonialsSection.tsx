@@ -43,15 +43,17 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
         {/* Marquee track */}
         <div className="container-site mx-auto">
           <div
-            className="group overflow-hidden"
+            className="overflow-hidden"
             style={{
               maskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
               WebkitMaskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
             }}
           >
             <div
-              className="flex group-hover:[animation-play-state:paused]"
+              className="flex"
               style={{ animation: 'marquee 55s linear infinite' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.animationPlayState = 'paused' }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.animationPlayState = 'running' }}
               aria-label="Customer testimonials"
             >
               {repeated.map((t, i) => (
