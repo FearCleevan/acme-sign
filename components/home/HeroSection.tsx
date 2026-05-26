@@ -50,9 +50,9 @@ export default function HeroSection() {
       <motion.div
         ref={fgRef}
         style={{ y: fgY }}
-        className="relative z-10 container-site w-full pt-[72px]"
+        className="relative z-10 container-site w-full pt-18"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-[60fr_40fr] gap-12 lg:gap-16 items-center py-20 lg:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-[52fr_48fr] gap-12 lg:gap-16 items-center py-20 lg:py-28">
 
           {/* Left content column */}
           <div className="flex flex-col gap-7">
